@@ -1,16 +1,21 @@
 package hellotvxlet;
 
 import hellotvxlet.*;
+import java.awt.event.KeyEvent;
 import java.util.Timer;
 import javax.tv.xlet.Xlet;
 import javax.tv.xlet.XletContext;
 import javax.tv.xlet.XletStateChangeException;
+import org.bluray.ui.event.HRcEvent;
+import org.dvb.event.*;
+import org.dvb.event.*;
+import org.dvb.event.UserEventListener;
 import org.havi.ui.HScene;
 import org.havi.ui.HSceneFactory;
 
-public class HelloTVXlet implements Xlet
+public class HelloTVXlet implements Xlet, UserEventListener
 {
-
+ SnakeChain snake;
     public void destroyXlet(boolean unconditional) throws XletStateChangeException {
         
     }
@@ -25,18 +30,24 @@ public class HelloTVXlet implements Xlet
         Publisher pub = new Publisher();
         pub.setScene(scene);
         Timer t = new Timer();
-        t.scheduleAtFixedRate(pub,0,10);
+        t.scheduleAtFixedRate(pub,0,50);
         
-        for(int x=0;x<10;x++)
-        {
-            for(int y=0; y<5; y++)
-            {
-                SnakeComponent comp = new SnakeComponent(x*60, y*60);
-                pub.register(comp);
-                scene.add(comp);
-            }
-        }
+         /*SnakeComponent comp = new SnakeComponent(60, 60);
+         pub.register(comp);
+         scene.add(comp);*/
+       snake = new SnakeChain(scene, pub);
+        pub.register(snake);
         
+         EventManager manager = EventManager.getInstance();
+        UserEventRepository repository = new UserEventRepository("Voorbeeld");
+        
+        repository.addKey(HRcEvent.VK_UP);
+        repository.addKey(HRcEvent.VK_DOWN);
+        repository.addKey(HRcEvent.VK_LEFT);
+        repository.addKey(HRcEvent.VK_RIGHT);
+        
+        
+        manager.addUserEventListener(this, repository);
     }
 
     public void pauseXlet() {
@@ -46,5 +57,32 @@ public class HelloTVXlet implements Xlet
     public void startXlet() throws XletStateChangeException {
         
     }
+
+    
+    public void userEventReceived(UserEvent e) {
+        
+        if(e.getType()== KeyEvent.KEY_PRESSED)
+        {
+           
+            switch(e.getCode()){
+                case HRcEvent.VK_UP:
+                    snake.moveUp();
+                    
+                    break;
+                case HRcEvent.VK_DOWN:
+                    snake.moveDown();
+                    
+                    break;
+                case HRcEvent.VK_LEFT:
+                    snake.moveLeft();
+                    break;
+                case HRcEvent.VK_RIGHT:
+                    snake.moveRight();
+                    break;
+            }
+        }
+        
+    }
+    
     
 }

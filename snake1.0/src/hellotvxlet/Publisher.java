@@ -29,7 +29,7 @@ public class Publisher extends TimerTask implements PublisherInterface{
     public void run() //Deze methode wordt door de timer aangestuurd 
     {
         
-         tijd++;
+       tijd++;
     
       for( int i = 0; i<observerdb.size();i++)
       {

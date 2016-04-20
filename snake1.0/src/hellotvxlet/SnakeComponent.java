@@ -16,7 +16,7 @@ public class SnakeComponent extends Sprite
     public SnakeComponent(int x, int y)
     {
        super(x,y); //roep contrstructor van sprite aan
-       this.setSize(50,50);
+       this.setSize(20,20);
        mijnimage=  this.getToolkit().getImage("pizza1.jpg");
        MediaTracker mt = new MediaTracker(this);
        mt.addImage(mijnimage, 1);
@@ -36,6 +36,8 @@ public class SnakeComponent extends Sprite
         y+=2;
         this.setLocation(x,y);
     }
+    
+   
     
     
 }
