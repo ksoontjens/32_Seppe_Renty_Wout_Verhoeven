@@ -15,26 +15,27 @@ import java.util.ArrayList;
 import org.havi.ui.HComponent;
 import org.havi.ui.HScene;
 
-public class SnakeChain extends HComponent implements ObserverInterface{
+public class SnakeChain implements ObserverInterface{
 
     HScene scene;
     Publisher pub;
     ArrayList chain = new ArrayList();
-    int chainLength = 100;
+    int chainLength = 3;
     
     boolean moveDown = false;
     boolean moveLeft = false;
     boolean moveRight = false;
     boolean moveUp = false;
+    String componentImage = "pizza1.jpg";
     
-    SnakeComponent compie;
+    SnakeComponent firstComp;
     public SnakeChain(HScene initScene, Publisher initPub)
     {
         scene = initScene;
         pub = initPub;
         
-        compie = new SnakeComponent(60,60);
-        chain.add(compie);
+        firstComp = new SnakeComponent(60,60, componentImage);
+        chain.add(firstComp);
        
     }
     
@@ -54,34 +55,71 @@ public class SnakeChain extends HComponent implements ObserverInterface{
             int y = lastChain.getY();
             int width = lastChain.getWidth();
             int height = lastChain.getHeight();
+            
+            int sceneWidth = scene.getWidth();
+            int sceneHeight = scene.getHeight();
+            
             SnakeComponent comp;
             if(moveDown)
             {
-            comp = new SnakeComponent(x, (y+height));
-            System.out.println("down");
+                if(y>=(sceneHeight-height))
+                {
+                    comp = new SnakeComponent(x, 0,componentImage);
+                }
+                else
+                {
+                    comp = new SnakeComponent(x, (y+height),componentImage);
+                }
+            
             }
             else if(moveUp)
             {
-            comp = new SnakeComponent(x, (y-height));
-            System.out.println("up");
+                if(y<=0)
+                {  
+                    comp = new SnakeComponent(x, (580-height),componentImage);
+                }
+                else
+                {    
+                 comp = new SnakeComponent(x, (y-height), componentImage);
+                }
+            
             }
             
             else if(moveLeft)
             {
-            comp = new SnakeComponent((x-width), y);
-            System.out.println("left");
+                if(x<=0)
+                {
+                    comp = new SnakeComponent((sceneWidth-width), y, componentImage);
+                    System.out.println(sceneWidth);
+                }
+                
+                else
+                {
+                    comp = new SnakeComponent((x-width), y, componentImage);
+                }
+            
             }
             
             else if(moveRight)
             {
-            comp = new SnakeComponent((x+width), y);
-            System.out.println("right");
+                if(x>=(sceneWidth-width))
+                {
+                    
+                    comp = new SnakeComponent((0), y, componentImage);
+                    System.out.println(sceneWidth);
+                }
+                else
+                {
+                    
+                    comp = new SnakeComponent((x+width), y, componentImage);
+                }
+            
             }
             
            
             else
             {
-            comp = new SnakeComponent(x, (y+height));
+            comp = new SnakeComponent(x, (y+height), componentImage);
             }
             
             chain.add(comp);
@@ -106,7 +144,12 @@ public class SnakeChain extends HComponent implements ObserverInterface{
         
         move(tijd);
         
-        scene.repaint();
+        
+    }
+    
+    public void pointUp()
+    {
+        chainLength+=1;
     }
     
      public void moveUp()

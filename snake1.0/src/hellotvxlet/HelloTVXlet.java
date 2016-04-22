@@ -16,6 +16,7 @@ import org.havi.ui.HSceneFactory;
 public class HelloTVXlet implements Xlet, UserEventListener
 {
  SnakeChain snake;
+ CoinHandler coinManager;
     public void destroyXlet(boolean unconditional) throws XletStateChangeException {
         
     }
@@ -30,13 +31,14 @@ public class HelloTVXlet implements Xlet, UserEventListener
         Publisher pub = new Publisher();
         pub.setScene(scene);
         Timer t = new Timer();
-        t.scheduleAtFixedRate(pub,0,50);
+        t.scheduleAtFixedRate(pub,0,75);
         
-         /*SnakeComponent comp = new SnakeComponent(60, 60);
-         pub.register(comp);
-         scene.add(comp);*/
+         
        snake = new SnakeChain(scene, pub);
-        pub.register(snake);
+       pub.register(snake);
+       
+       coinManager = new CoinHandler(scene, snake);
+       pub.register(coinManager);
         
          EventManager manager = EventManager.getInstance();
         UserEventRepository repository = new UserEventRepository("Voorbeeld");

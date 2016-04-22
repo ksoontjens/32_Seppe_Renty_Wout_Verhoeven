@@ -36,6 +36,7 @@ public class Publisher extends TimerTask implements PublisherInterface{
             ((ObserverInterface)observerdb.get(i)).update(tijd);
       }
        
+       scene.repaint();
     }
 
     public void register(ObserverInterface observer) {
