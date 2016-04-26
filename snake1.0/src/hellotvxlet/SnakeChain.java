@@ -20,13 +20,15 @@ public class SnakeChain implements ObserverInterface{
     HScene scene;
     Publisher pub;
     ArrayList chain = new ArrayList();
-    int chainLength = 20;
+    int chainLength = 4;
     
     boolean moveDown = false;
     boolean moveLeft = false;
     boolean moveRight = false;
     boolean moveUp = false;
-    String componentImage = "pizza1.jpg";
+    
+    boolean gameOver = false;
+    String componentImage = "snakePart.png";
     
     SnakeComponent firstComp;
     public SnakeChain(HScene initScene, Publisher initPub)
@@ -133,6 +135,7 @@ public class SnakeChain implements ObserverInterface{
             if(head.getBounds().intersects(tailComp.getBounds()))
             {
                 System.out.println("Hit");
+                gameOver = true;
             }
         }
     }
@@ -152,10 +155,11 @@ public class SnakeChain implements ObserverInterface{
 
     public void update(int tijd) 
     {
-        
+        if(!gameOver)
+        {
         move(tijd);
         checkTailCollision();
-        
+        }
         
     }
     

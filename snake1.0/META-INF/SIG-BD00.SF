@@ -1,31 +1,28 @@
 Signature-Version: 1.0
 Created-By: 1.6.0_16 (Sun Microsystems Inc.)
 BDJ-Signature-Version: 1.0
-SHA1-Digest-Manifest: aPqb8fskSWYBtXfamOKq0bERMmE=
+SHA1-Digest-Manifest: MkEiivH2Vb9Vj+3h2+myxGE2atk=
 
-Name: hellotvxlet/HelloTVXlet$1.class
-SHA1-Digest: jL4rl+dtvgbj4VErj8qjkXfGCe4=
+Name: hellotvxlet/HelloTVXlet.class
+SHA1-Digest: V4SZh99SM/Z6SduiyKAM5+SMFXY=
 
 Name: hellotvxlet/CoinHandler.class
-SHA1-Digest: GZT8qEW1DTjwZBP06ZXqFYEjUgA=
+SHA1-Digest: 1fJgLkvwwVaGGh8LXAV8L1TRVMM=
 
 Name: hellotvxlet/Coin.class
 SHA1-Digest: IZPzBNk4+LsZlKbhQZ9KZeFt+/Q=
 
-Name: hellotvxlet/MijnComponent.class
-SHA1-Digest: iSCj+qGLfb1hUXe7cF+LH02uYE4=
+Name: hellotvxlet/SnakeChain.class
+SHA1-Digest: i2xjquZ3qVPLt3fATVKIKsEZYCg=
 
-Name: scene.class
-SHA1-Digest: 0OKHff6cpDNaU2wYKWtFr6psiGY=
+Name: hellotvxlet/Publisher.class
+SHA1-Digest: RyESipjcnXgOjX9GwCSYvcKH1yk=
 
 Name: hellotvxlet/ObserverInterface.class
 SHA1-Digest: Bo1NMRjHMI9UCJqpsAR2BJIJ2l0=
 
-Name: hellotvxvlet/HStillBackgroundConfiguration.class
-SHA1-Digest: Je5OtEvuK79qEhEPsE8NotMR+9E=
-
-Name: hellotvxlet/Component.class
-SHA1-Digest: j5enqsqZWBYjTzdXxpCX/w/P7Pg=
+Name: hellotvxlet/bluray.HelloTVXlet.perm
+SHA1-Digest: 84ZO/rYCyy0JStmaLbg1GDVEFhQ=
 
 Name: hellotvxlet/Sprite.class
 SHA1-Digest: cAqf0j8ilbpFs/NR95U61VygEDw=
@@ -35,25 +32,4 @@ SHA1-Digest: LZU3iOABIEm541XlxuSZEmMCl0w=
 
 Name: hellotvxlet/SnakeComponent.class
 SHA1-Digest: 2d0GIEhQuiRcVRffIhRTWfJkX6c=
-
-Name: hellotvxlet/HelloTVXlet.class
-SHA1-Digest: V4SZh99SM/Z6SduiyKAM5+SMFXY=
-
-Name: HelloTVXlet.class
-SHA1-Digest: 7594hKg1lJqPqOQIp+4j5UkxyOY=
-
-Name: hellotvxlet/SnakeChain.class
-SHA1-Digest: I9Ye0xo+ZQWGFoI0gDJ9XHZGzyk=
-
-Name: hellotvxvlet/HelloTVXlet.class
-SHA1-Digest: 7UZ6u827H14UU+4QTS6kVa2NIwY=
-
-Name: hellotvxlet/Publisher.class
-SHA1-Digest: RyESipjcnXgOjX9GwCSYvcKH1yk=
-
-Name: NewXlet.class
-SHA1-Digest: p0lwYNepTCiDFnvXulaUfz7vdG0=
-
-Name: hellotvxlet/bluray.HelloTVXlet.perm
-SHA1-Digest: 84ZO/rYCyy0JStmaLbg1GDVEFhQ=
 

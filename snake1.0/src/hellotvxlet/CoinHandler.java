@@ -74,12 +74,8 @@ public class CoinHandler implements ObserverInterface{
                     {
                         noConflict = false;
                     }
-                    
-                      
+                                   
                 }
-                
-                
-                
                 if(noConflict)
                 {
                         int[] newPos = {x,y};
