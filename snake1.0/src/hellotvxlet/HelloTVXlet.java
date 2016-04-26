@@ -34,11 +34,11 @@ public class HelloTVXlet implements Xlet, UserEventListener
         t.scheduleAtFixedRate(pub,0,75);
         
          
-       snake = new SnakeChain(scene, pub);
-       pub.register(snake);
-       
-       coinManager = new CoinHandler(scene, snake);
-       pub.register(coinManager);
+           snake = new SnakeChain(scene, pub);
+           pub.register(snake);
+
+           coinManager = new CoinHandler(scene, snake);
+           pub.register(coinManager);
         
          EventManager manager = EventManager.getInstance();
         UserEventRepository repository = new UserEventRepository("Voorbeeld");
@@ -72,13 +72,16 @@ public class HelloTVXlet implements Xlet, UserEventListener
                     
                     break;
                 case HRcEvent.VK_DOWN:
+                    
                     snake.moveDown();
                     
                     break;
                 case HRcEvent.VK_LEFT:
+                    
                     snake.moveLeft();
                     break;
                 case HRcEvent.VK_RIGHT:
+                    
                     snake.moveRight();
                     break;
             }

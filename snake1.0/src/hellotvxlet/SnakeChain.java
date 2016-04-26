@@ -20,7 +20,7 @@ public class SnakeChain implements ObserverInterface{
     HScene scene;
     Publisher pub;
     ArrayList chain = new ArrayList();
-    int chainLength = 3;
+    int chainLength = 20;
     
     boolean moveDown = false;
     boolean moveLeft = false;
@@ -33,7 +33,6 @@ public class SnakeChain implements ObserverInterface{
     {
         scene = initScene;
         pub = initPub;
-        
         firstComp = new SnakeComponent(60,60, componentImage);
         chain.add(firstComp);
        
@@ -44,10 +43,8 @@ public class SnakeChain implements ObserverInterface{
         
             if(chain.size() >= chainLength)
             {
-                
                 scene.remove((HComponent)chain.get(0));
                 chain.remove(0);
-                
             }
             
             SnakeComponent lastChain = (SnakeComponent) chain.get(chain.size()-1);
@@ -127,6 +124,19 @@ public class SnakeChain implements ObserverInterface{
            
     }
     
+    public void checkTailCollision()
+    {
+        SnakeComponent head = (SnakeComponent)chain.get(chain.size()-1);
+        for(int i = 0; i< (chain.size()-1); i++)
+        {
+            SnakeComponent tailComp = (SnakeComponent)chain.get(i);
+            if(head.getBounds().intersects(tailComp.getBounds()))
+            {
+                System.out.println("Hit");
+            }
+        }
+    }
+    
    
     
     
@@ -140,9 +150,11 @@ public class SnakeChain implements ObserverInterface{
         }
     }
 
-    public void update(int tijd) {
+    public void update(int tijd) 
+    {
         
         move(tijd);
+        checkTailCollision();
         
         
     }
@@ -151,6 +163,8 @@ public class SnakeChain implements ObserverInterface{
     {
         chainLength+=1;
     }
+    
+    
     
      public void moveUp()
     {

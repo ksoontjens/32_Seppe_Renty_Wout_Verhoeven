@@ -89,7 +89,7 @@ public class CoinHandler implements ObserverInterface{
                 
             }
         }
-         System.out.println(spawnLocations.size() + "  " + chain.size());
+         /*System.out.println(spawnLocations.size() + "  " + chain.size());*/
         
        /*een random index nemen van spawnLocations*/
         
