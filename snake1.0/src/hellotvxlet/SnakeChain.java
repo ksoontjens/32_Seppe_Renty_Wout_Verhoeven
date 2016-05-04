@@ -20,9 +20,8 @@ public class SnakeChain implements ObserverInterface{
     HScene scene;
     Publisher pub;
     ArrayList chain = new ArrayList();
-    int chainLength = 4;
-    
-    boolean moveDown = false;
+    int chainLength = 4;    
+    boolean moveDown = true;
     boolean moveLeft = false;
     boolean moveRight = false;
     boolean moveUp = false;
@@ -38,6 +37,21 @@ public class SnakeChain implements ObserverInterface{
         firstComp = new SnakeComponent(60,60, componentImage);
         chain.add(firstComp);
        
+    }
+    
+    public void restart()
+    {
+        removeChain();
+        chain = new ArrayList();
+        chainLength = 4;
+        moveDown = true;
+        moveLeft = false;
+        moveRight = false;
+        moveUp = false;
+        gameOver = false;
+        
+        firstComp = new SnakeComponent(60,60, componentImage);
+        chain.add(firstComp);
     }
     
     public void move(int tijd)
@@ -141,6 +155,14 @@ public class SnakeChain implements ObserverInterface{
     }
     
    
+    public void removeChain()
+    {
+        for(int i = 0; i < chain.size(); i++)
+        {
+            /*pub.register((ObserverInterface) chain.get(i));*/
+            scene.remove((HComponent)chain.get(i));
+        }
+    }
     
     
     

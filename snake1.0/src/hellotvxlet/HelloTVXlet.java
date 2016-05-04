@@ -48,6 +48,8 @@ public class HelloTVXlet implements Xlet, UserEventListener
         repository.addKey(HRcEvent.VK_LEFT);
         repository.addKey(HRcEvent.VK_RIGHT);
         
+        repository.addKey(HRcEvent.VK_SPACE);
+        
         
         manager.addUserEventListener(this, repository);
     }
@@ -58,6 +60,14 @@ public class HelloTVXlet implements Xlet, UserEventListener
 
     public void startXlet() throws XletStateChangeException {
         
+    }
+    
+    public void restartGame()
+    {
+        if(snake.gameOver)
+        {
+            snake.restart();
+        }
     }
 
     
@@ -83,6 +93,10 @@ public class HelloTVXlet implements Xlet, UserEventListener
                 case HRcEvent.VK_RIGHT:
                     
                     snake.moveRight();
+                    break;
+                case HRcEvent.VK_SPACE:
+                    System.out.println("test");
+                    restartGame();
                     break;
             }
         }
