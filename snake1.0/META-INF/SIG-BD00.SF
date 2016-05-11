@@ -1,35 +1,35 @@
 Signature-Version: 1.0
 Created-By: 1.6.0_16 (Sun Microsystems Inc.)
 BDJ-Signature-Version: 1.0
-SHA1-Digest-Manifest: cpRJoDN51pvqRrO/fODz5Kgpotw=
+SHA1-Digest-Manifest: wrHqD626WHZSywcg1WLp7WOEy90=
 
 Name: hellotvxlet/HelloTVXlet.class
-SHA1-Digest: nVopJO41ChenHLjLy0usB5/XEfo=
+SHA1-Digest: opUC99zavN0q+A/8WpJn+oQYoak=
 
 Name: hellotvxlet/CoinHandler.class
-SHA1-Digest: yHb+qtCYSTib2IPqr34qQFWgEr4=
+SHA1-Digest: W38vBc6DGyl4d3FjEymQ6MtC8wg=
 
 Name: hellotvxlet/Coin.class
 SHA1-Digest: IZPzBNk4+LsZlKbhQZ9KZeFt+/Q=
 
 Name: hellotvxlet/SnakeChain.class
-SHA1-Digest: hCCE8b4gU1uMMOFwr2eJOe2ox0E=
+SHA1-Digest: Z8gXK3RupIzY6AagKsI1MH3NYp4=
 
 Name: hellotvxlet/Publisher.class
-SHA1-Digest: RyESipjcnXgOjX9GwCSYvcKH1yk=
+SHA1-Digest: Sh8ud1Sz9It3wulBfI3bO5PbodU=
 
 Name: hellotvxlet/ObserverInterface.class
 SHA1-Digest: Bo1NMRjHMI9UCJqpsAR2BJIJ2l0=
 
 Name: hellotvxlet/bluray.HelloTVXlet.perm
-SHA1-Digest: 84ZO/rYCyy0JStmaLbg1GDVEFhQ=
+SHA1-Digest: Iz2EmX/hIvVXbO3PX0e6hezSY28=
 
 Name: hellotvxlet/Sprite.class
-SHA1-Digest: cAqf0j8ilbpFs/NR95U61VygEDw=
+SHA1-Digest: NUgWEUdtYVfgsLJh9Lg1i9wl1pM=
 
 Name: hellotvxlet/PublisherInterface.class
 SHA1-Digest: LZU3iOABIEm541XlxuSZEmMCl0w=
 
 Name: hellotvxlet/SnakeComponent.class
-SHA1-Digest: 2d0GIEhQuiRcVRffIhRTWfJkX6c=
+SHA1-Digest: Rc4Jua3FjU1ZcnYSn+zbkibi+m8=
 

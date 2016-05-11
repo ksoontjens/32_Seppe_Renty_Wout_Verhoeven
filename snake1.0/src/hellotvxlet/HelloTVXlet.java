@@ -15,32 +15,26 @@ import org.havi.ui.HSceneFactory;
 
 public class HelloTVXlet implements Xlet, UserEventListener
 {
- SnakeChain snake;
- CoinHandler coinManager;
+    SnakeChain snake;
+    CoinHandler coinManager;
+    Publisher pub;
     public void destroyXlet(boolean unconditional) throws XletStateChangeException {
         
     }
-
     public void initXlet(XletContext ctx) throws XletStateChangeException {
-        HScene scene = HSceneFactory.getInstance().getDefaultHScene();
-       
-        
+        HScene scene = HSceneFactory.getInstance().getDefaultHScene();               
         scene.validate();
-        scene.setVisible(true);
-        
-        Publisher pub = new Publisher();
+        scene.setVisible(true);        
+        pub = new Publisher();
         pub.setScene(scene);
         Timer t = new Timer();
-        t.scheduleAtFixedRate(pub,0,75);
-        
-         
-           snake = new SnakeChain(scene, pub);
-           pub.register(snake);
+        t.scheduleAtFixedRate(pub,0,75);             
+        snake = new SnakeChain(scene, pub);
+        pub.register(snake);
 
-           coinManager = new CoinHandler(scene, snake);
-           pub.register(coinManager);
-        
-         EventManager manager = EventManager.getInstance();
+        coinManager = new CoinHandler(scene, snake);
+        pub.register(coinManager);        
+        EventManager manager = EventManager.getInstance();
         UserEventRepository repository = new UserEventRepository("Voorbeeld");
         
         repository.addKey(HRcEvent.VK_UP);
@@ -48,9 +42,7 @@ public class HelloTVXlet implements Xlet, UserEventListener
         repository.addKey(HRcEvent.VK_LEFT);
         repository.addKey(HRcEvent.VK_RIGHT);
         
-        repository.addKey(HRcEvent.VK_SPACE);
-        
-        
+        repository.addKey(HRcEvent.VK_SPACE);                
         manager.addUserEventListener(this, repository);
     }
 
@@ -67,41 +59,33 @@ public class HelloTVXlet implements Xlet, UserEventListener
         if(snake.gameOver)
         {
             snake.restart();
+        } else{
+            
+            pub.togglePause();
         }
-    }
-
-    
+    }    
     public void userEventReceived(UserEvent e) {
         
         if(e.getType()== KeyEvent.KEY_PRESSED)
-        {
-           
+        {           
             switch(e.getCode()){
                 case HRcEvent.VK_UP:
-                    snake.moveUp();
-                    
+                    snake.moveUp();                    
                     break;
-                case HRcEvent.VK_DOWN:
-                    
-                    snake.moveDown();
-                    
+                case HRcEvent.VK_DOWN:                    
+                    snake.moveDown();                    
                     break;
-                case HRcEvent.VK_LEFT:
-                    
+                case HRcEvent.VK_LEFT:                    
                     snake.moveLeft();
                     break;
-                case HRcEvent.VK_RIGHT:
-                    
+                case HRcEvent.VK_RIGHT:                    
                     snake.moveRight();
                     break;
-                case HRcEvent.VK_SPACE:
-                    System.out.println("test");
+                case HRcEvent.VK_SPACE:                                       
                     restartGame();
                     break;
             }
         }
-        
-    }
-    
-    
+
+    } 
 }

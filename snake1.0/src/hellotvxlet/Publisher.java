@@ -20,23 +20,24 @@ public class Publisher extends TimerTask implements PublisherInterface{
     ArrayList observerdb = new ArrayList();
     int tijd  = 0;
     HScene scene;
+    boolean paused = false;
     public void setScene(HScene s)
     {
         scene=s;
     }
-    
-    
+    public void togglePause(){
+        paused = !paused;
+    }
     public void run() //Deze methode wordt door de timer aangestuurd 
     {
-        
-       tijd++;
-    
-      for( int i = 0; i<observerdb.size();i++)
-      {
-            ((ObserverInterface)observerdb.get(i)).update(tijd);
+      if(!paused){
+          tijd++;    
+          for( int i = 0; i<observerdb.size();i++)
+          {
+                ((ObserverInterface)observerdb.get(i)).update(tijd);
+          }       
+          scene.repaint();
       }
-       
-       scene.repaint();
     }
 
     public void register(ObserverInterface observer) {
@@ -46,10 +47,4 @@ public class Publisher extends TimerTask implements PublisherInterface{
     public void unregister(ObserverInterface observer) {
         observerdb.remove(observer);
     }
-
-    
-
-    
-    
-
 }

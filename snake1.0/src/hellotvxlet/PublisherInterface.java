@@ -10,9 +10,6 @@ package hellotvxlet;
  * @author student
  */
 public interface PublisherInterface {
-    
-   
         public abstract void register(ObserverInterface observer);
-        public abstract void unregister(ObserverInterface observer);
-   
+        public abstract void unregister(ObserverInterface observer);  
 }

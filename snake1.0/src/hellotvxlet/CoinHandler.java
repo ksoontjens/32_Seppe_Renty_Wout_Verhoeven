@@ -18,22 +18,17 @@ public class CoinHandler implements ObserverInterface{
     HScene scene;
     SnakeChain snake;
     Coin coin;
-    int test;
     
     public CoinHandler(HScene initScene, SnakeChain initSnake)
     {
         scene = initScene;
         snake = initSnake;
-        spawnCoin();
-        
-    }
-    
+        spawnCoin();        
+    }    
     public void collisionDetection()
-    {
-        
+    {        
         ArrayList chain = snake.chain;
-        SnakeComponent snakeHead = (SnakeComponent) chain.get(chain.size()-1);
-        
+        SnakeComponent snakeHead = (SnakeComponent) chain.get(chain.size()-1);        
         if(coin!=null)
         {
                if(snakeHead.getBounds().intersects(coin.getBounds()))
@@ -43,70 +38,49 @@ public class CoinHandler implements ObserverInterface{
                    coin = null;
                    spawnCoin();
                }
-        }
-        
+        }        
     }
     
     public void spawnCoin()
     {
-        
-        
-        ArrayList spawnLocations = new ArrayList();
-        
+        ArrayList spawnLocations = new ArrayList();        
         int sceneWidth = scene.getWidth();
         int sceneHeight = scene.getHeight();
-        
-        
         ArrayList chain = snake.chain;
-        /*spawnLocations vullen met al de mogelijke spawnlocations*/
-        
+        /*spawnLocations vullen met al de mogelijke spawnlocations*/       
         for(int y = 0; y < sceneHeight; y+=20)
         {
             for(int x = 0; x<sceneWidth; x+=20)
             {
-                boolean noConflict = true;               
-                
+                boolean noConflict = true;                               
                 for(int i = 0; i<chain.size(); i++)
                 {
-                    SnakeComponent comp = (SnakeComponent) chain.get(i);
-                    
+                    SnakeComponent comp = (SnakeComponent) chain.get(i);                    
                     if((x == comp.getX()) && (y == comp.getY()))
                     {
                         noConflict = false;
-                    }
-                                   
+                    }                                   
                 }
                 if(noConflict)
                 {
                         int[] newPos = {x,y};
                         spawnLocations.add(newPos);
                 }
-                
-                
             }
         }
-         /*System.out.println(spawnLocations.size() + "  " + chain.size());*/
-        
-       /*een random index nemen van spawnLocations*/
-        
+        /*System.out.println(spawnLocations.size() + "  " + chain.size());*/        
+        /*een random index nemen van spawnLocations*/        
         Random rand = new Random();
-        int random = rand.nextInt(spawnLocations.size()-1)+0;
-        
-       
-        
-        int[] coord = (int[]) spawnLocations.get(random);
-        
+        int random = rand.nextInt(spawnLocations.size()-1)+0;                       
+        int[] coord = (int[]) spawnLocations.get(random);        
         int xpos = coord[0];
-        int ypos = coord[1];
-        
-        
-        coin = new Coin(xpos,ypos, "pizza1.jpg");
+        int ypos = coord[1];                
+        coin = new Coin(xpos,ypos, "cherry.png");
         scene.add(coin);
     }
 
     public void update(int tijd)
     {
-        collisionDetection();
-        
+        collisionDetection();        
     }
 }

@@ -16,8 +16,7 @@ import org.havi.ui.HIcon;
 public abstract class Sprite extends HIcon implements ObserverInterface
 {
     Image mijnimage;
-    int x,y;
-    
+    int x,y;   
     public Sprite(int x, int y, String initImage)
     {
        super(); //roept contructor op van HICOn (superklasse) dit moet op eerste regel
@@ -36,11 +35,8 @@ public abstract class Sprite extends HIcon implements ObserverInterface
             ex.printStackTrace();
         }
        
-      //this.setSize(mijnimage.getWidth(this), mijnimage.getHeight(this));
-       this.setGraphicContent(mijnimage, this.NORMAL_STATE);
-        
+       //this.setSize(mijnimage.getWidth(this), mijnimage.getHeight(this));
+       this.setGraphicContent(mijnimage, this.NORMAL_STATE);        
     }
-
-    public abstract void update(int tijd);
-        
+    public abstract void update(int tijd);   
 }

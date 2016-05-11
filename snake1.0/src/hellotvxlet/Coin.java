@@ -21,5 +21,4 @@ public class Coin extends Sprite {
     public void update(int tijd) {
         
     }
-
 }
