@@ -1,91 +1,57 @@
 package hellotvxlet;
 
-import hellotvxlet.*;
-import java.awt.event.KeyEvent;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.util.Timer;
 import javax.tv.xlet.Xlet;
 import javax.tv.xlet.XletContext;
 import javax.tv.xlet.XletStateChangeException;
-import org.bluray.ui.event.HRcEvent;
-import org.dvb.event.*;
-import org.dvb.event.*;
-import org.dvb.event.UserEventListener;
 import org.havi.ui.HScene;
 import org.havi.ui.HSceneFactory;
+import org.havi.ui.HStaticText;
+import org.havi.ui.HVisible;
 
-public class HelloTVXlet implements Xlet, UserEventListener
+
+    
+    
+public class HelloTVXlet implements Xlet
+      
 {
-    SnakeChain snake;
-    CoinHandler coinManager;
-    Publisher pub;
-    public void destroyXlet(boolean unconditional) throws XletStateChangeException {
-        
-    }
-    public void initXlet(XletContext ctx) throws XletStateChangeException {
-        HScene scene = HSceneFactory.getInstance().getDefaultHScene();               
-        scene.validate();
-        scene.setVisible(true);        
-        pub = new Publisher();
-        pub.setScene(scene);
-        Timer t = new Timer();
-        t.scheduleAtFixedRate(pub,0,75);             
-        snake = new SnakeChain(scene, pub);
-        pub.register(snake);
+ SnakeXlet gxlet;
+ XletContext ctx;
 
-        coinManager = new CoinHandler(scene, snake);
-        pub.register(coinManager);        
-        EventManager manager = EventManager.getInstance();
-        UserEventRepository repository = new UserEventRepository("Voorbeeld");
-        
-        repository.addKey(HRcEvent.VK_UP);
-        repository.addKey(HRcEvent.VK_DOWN);
-        repository.addKey(HRcEvent.VK_LEFT);
-        repository.addKey(HRcEvent.VK_RIGHT);
-        
-        repository.addKey(HRcEvent.VK_SPACE);                
-        manager.addUserEventListener(this, repository);
+ 
+    public void destroyXlet(boolean unconditional) throws XletStateChangeException {
+
+    }
+
+    public void initXlet(XletContext ctx) throws XletStateChangeException {
+            // Start de GameXlet
+          
+            this.ctx=ctx;
+            gxlet=new SnakeXlet(this);
+           
+           gxlet.initXlet(ctx);
+            gxlet.startXlet();
     }
 
     public void pauseXlet() {
-        
+
     }
 
     public void startXlet() throws XletStateChangeException {
-        
-    }
     
-    public void restartGame()
+    }
+ 
+    public void respawn() throws XletStateChangeException
     {
-        if(snake.gameOver)
-        {
-            snake.restart();
-        } else{
-            
-            pub.togglePause();
-        }
-    }    
-    public void userEventReceived(UserEvent e) {
-        
-        if(e.getType()== KeyEvent.KEY_PRESSED)
-        {           
-            switch(e.getCode()){
-                case HRcEvent.VK_UP:
-                    snake.moveUp();                    
-                    break;
-                case HRcEvent.VK_DOWN:                    
-                    snake.moveDown();                    
-                    break;
-                case HRcEvent.VK_LEFT:                    
-                    snake.moveLeft();
-                    break;
-                case HRcEvent.VK_RIGHT:                    
-                    snake.moveRight();
-                    break;
-                case HRcEvent.VK_SPACE:                                       
-                    restartGame();
-                    break;
-            }
-        }
+        System.out.println("Restart Xlet!!!");
+        gxlet.destroyXlet(true);
+        gxlet=new SnakeXlet(this);
+        gxlet.initXlet(ctx);
+        gxlet.startXlet();
+    }
 
-    } 
+
+    
 }

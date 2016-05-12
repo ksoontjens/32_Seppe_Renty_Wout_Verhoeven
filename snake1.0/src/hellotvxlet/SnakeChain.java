@@ -38,19 +38,26 @@ public class SnakeChain implements ObserverInterface{
         pub = initPub;
         firstComp = new SnakeComponent(60,60, componentImage);            
         chain.add(firstComp);
+        
+        scoreLabel = new HStaticText("Score = " + score);
+        scene.add(scoreLabel); 
         /*removeLabel();*/
         updateScore();
     } 
-    public void removeLabel(){
+    public void updateScoreLabel(){
+         
         scene.remove(scoreLabel);
-    }
-    public void updateScore(){        
         scoreLabel = new HStaticText("Score = " + score);
+        scene.add(scoreLabel); 
+       
+    }
+    public void updateScore(){       
+        updateScoreLabel();
         scoreLabel.setLocation(5,20);
         scoreLabel.setSize(100,20);
         scoreLabel.setBackground(new DVBColor(255,255,255,0));
         scoreLabel.setBackgroundMode(HVisible.BACKGROUND_FILL);       
-        scene.add(scoreLabel);       
+             
         System.out.println(score);
     }
     public void restart()
@@ -66,6 +73,8 @@ public class SnakeChain implements ObserverInterface{
         gameOver = false;
         firstComp = new SnakeComponent(60,60, componentImage);
         chain.add(firstComp);
+        
+        updateScore();
     }
     
     public void move(int tijd)
