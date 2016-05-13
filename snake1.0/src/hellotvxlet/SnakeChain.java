@@ -22,7 +22,7 @@ public class SnakeChain implements ObserverInterface{
     HScene scene;
     Publisher pub;
     ArrayList chain = new ArrayList();
-    int chainLength = 4;  
+    int chainLength = 10;  
     int score = 0;
     boolean moveDown = true;
     boolean moveLeft = false;
@@ -58,7 +58,7 @@ public class SnakeChain implements ObserverInterface{
         scoreLabel.setBackground(new DVBColor(255,255,255,0));
         scoreLabel.setBackgroundMode(HVisible.BACKGROUND_FILL);       
              
-        System.out.println(score);
+       
     }
     public void restart()
     {

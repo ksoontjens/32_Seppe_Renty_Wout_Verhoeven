@@ -19,16 +19,24 @@ public class SnakeXlet implements Xlet, UserEventListener
     CoinHandler coinManager;
     Publisher pub;
     HelloTVXlet homeProgram;
-    
+    HScene scene;
+    XletContext ctx;
     public SnakeXlet(HelloTVXlet initHome)
     {
         homeProgram = initHome;
+        
     }
     public void destroyXlet(boolean unconditional) throws XletStateChangeException {
         
+       scene.setVisible(false);
+        HSceneFactory.getInstance().dispose(scene);
     }
     public void initXlet(XletContext ctx) throws XletStateChangeException {
-        HScene scene = HSceneFactory.getInstance().getDefaultHScene();               
+        
+        
+        homeProgram.destroyXlet(true);
+        
+        scene = HSceneFactory.getInstance().getDefaultHScene();               
         scene.validate();
         scene.setVisible(true);        
         pub = new Publisher();
@@ -64,7 +72,15 @@ public class SnakeXlet implements Xlet, UserEventListener
     {
         if(snake.gameOver)
         {
-            snake.restart();
+            try {
+                /*snake.restart();*/
+              /*  this.destroyXlet(true);*/
+                System.out.println(snake.score);
+                homeProgram.respawn(snake.score);
+            } catch (XletStateChangeException ex) {
+                ex.printStackTrace();
+            }
+            
         } else{
             
             pub.togglePause();
