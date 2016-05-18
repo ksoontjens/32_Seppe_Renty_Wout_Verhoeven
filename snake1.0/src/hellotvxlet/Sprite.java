@@ -28,12 +28,11 @@ public abstract class Sprite extends HIcon implements ObserverInterface
        mijnimage=  this.getToolkit().getImage(initImage);
        MediaTracker mt = new MediaTracker(this);
        mt.addImage(mijnimage, 1);
-        try {
-
-            mt.waitForAll();
-        } catch (InterruptedException ex) {
-            ex.printStackTrace();
-        }
+       try {
+           mt.waitForAll();
+       } catch (InterruptedException ex) {
+           ex.printStackTrace();
+       }
        
        //this.setSize(mijnimage.getWidth(this), mijnimage.getHeight(this));
        this.setGraphicContent(mijnimage, this.NORMAL_STATE);        
