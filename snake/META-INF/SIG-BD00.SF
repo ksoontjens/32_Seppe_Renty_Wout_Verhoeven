@@ -1,19 +1,19 @@
 Signature-Version: 1.0
 Created-By: 1.6.0_16 (Sun Microsystems Inc.)
 BDJ-Signature-Version: 1.0
-SHA1-Digest-Manifest: OXH0L8auVZSOCrmGDmuO50zdMLs=
+SHA1-Digest-Manifest: OD1TU4Yz2ho88ybjGy8w3ZzzpUA=
 
 Name: hellotvxlet/HelloTVXlet.class
-SHA1-Digest: czMlh/1b3DdCY6pU7lsqoyxi3bs=
+SHA1-Digest: YioaEzLm4XzVOIccTw2RwyUvs70=
 
 Name: hellotvxlet/CoinHandler.class
-SHA1-Digest: XC9mGO6pqsPSVvgRi0WrJ6pHNug=
+SHA1-Digest: VX8vQf45MYCKA6FsakgeHxDihXc=
 
 Name: hellotvxlet/Coin.class
 SHA1-Digest: IZPzBNk4+LsZlKbhQZ9KZeFt+/Q=
 
 Name: hellotvxlet/SnakeChain.class
-SHA1-Digest: 6SbDCQ1x60uba4HyXC2MHEVNj+A=
+SHA1-Digest: hcurfH+oeRSqskHA8EVjGZxbcNM=
 
 Name: hellotvxlet/Publisher.class
 SHA1-Digest: Sh8ud1Sz9It3wulBfI3bO5PbodU=
@@ -34,5 +34,5 @@ Name: hellotvxlet/SnakeComponent.class
 SHA1-Digest: Rc4Jua3FjU1ZcnYSn+zbkibi+m8=
 
 Name: hellotvxlet/SnakeXlet.class
-SHA1-Digest: rin7xyy9EofvblZYSY4qOuzeczE=
+SHA1-Digest: VFsBAfjZBTsHzupFGth4XcstFQg=
 

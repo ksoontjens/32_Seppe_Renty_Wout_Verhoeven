@@ -48,9 +48,9 @@ public class CoinHandler implements ObserverInterface{
         int sceneHeight = scene.getHeight();
         ArrayList chain = snake.getSnakeChain();
         /*spawnLocations vullen met al de mogelijke spawnlocations*/       
-        for(int y = 0; y < sceneHeight; y+=20)
+        for(int y = 0; y < sceneHeight; y+=24)
         {
-            for(int x = 0; x<sceneWidth; x+=20)
+            for(int x = 0; x<sceneWidth; x+=24)
             {
                 boolean noConflict = true;                               
                 for(int i = 0; i<chain.size(); i++)
@@ -76,6 +76,9 @@ public class CoinHandler implements ObserverInterface{
         int xpos = coord[0];
         int ypos = coord[1];                
         coin = new Coin(xpos,ypos, "cherry.png");
+        
+        coin.setSize(24,24);
+        
         scene.add(coin);
     }
 

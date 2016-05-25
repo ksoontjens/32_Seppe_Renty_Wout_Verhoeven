@@ -111,14 +111,11 @@ public class HelloTVXlet implements Xlet, HActionListener, ResourceClient, HBack
     public void respawn() throws XletStateChangeException
     {
      
+        System.out.println("Restart Xlet!!!");
         gxlet.destroyXlet(true);
         gxlet=new SnakeXlet(this);
-        
-       
-        
-        this.initXlet(ctx);
-        this.startXlet();
-        
+        gxlet.initXlet(ctx);
+        gxlet.startXlet();
         
     }
 

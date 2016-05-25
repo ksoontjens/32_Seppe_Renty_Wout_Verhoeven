@@ -28,8 +28,11 @@ public class SnakeXlet implements Xlet, UserEventListener
     }
     public void destroyXlet(boolean unconditional) throws XletStateChangeException {
         
-       scene.setVisible(false);
+        System.out.println("destroyXlet");
+        scene.setVisible(false);
         HSceneFactory.getInstance().dispose(scene);
+
+
     }
     public void initXlet(XletContext ctx) throws XletStateChangeException {
         
@@ -43,7 +46,7 @@ public class SnakeXlet implements Xlet, UserEventListener
         pub.setScene(scene);
         Timer t = new Timer();
         
-       t.scheduleAtFixedRate(pub,0,75);
+        t.scheduleAtFixedRate(pub,0,80);
         
         snake = new SnakeChain(scene, pub);
         pub.register(snake);
@@ -72,22 +75,42 @@ public class SnakeXlet implements Xlet, UserEventListener
     
     public void restartGame()
     {
-        if(snake.isGameOver())
-        {
+        
             try {
                 /*snake.restart();*/
-              /*  this.destroyXlet(true);*/
-                
+             
+                /*this.destroyXlet(true);*/
+                /*homeProgram.initXlet(ctx);
+                homeProgram.startXlet();*/
                 homeProgram.respawn();
+                   
             } catch (XletStateChangeException ex) {
                 ex.printStackTrace();
             }
             
-        } else{
             
-            pub.togglePause();
+             snake.setGameOver(false);
+             System.out.println(snake.isGameOver());
+            
+       
+    }   
+    
+    public void pauseGame()
+    {
+        pub.togglePause();
+    }
+    
+    public void spaceIsPressed()
+    {
+        if(snake.isGameOver())
+        {
+            restartGame();
         }
-    }    
+        else
+        {
+            pauseGame();
+        }
+    }
     public void userEventReceived(UserEvent e) {
         
         if(e.getType()== KeyEvent.KEY_PRESSED)
@@ -106,7 +129,7 @@ public class SnakeXlet implements Xlet, UserEventListener
                     snake.moveRight();
                     break;
                 case HRcEvent.VK_SPACE:                                       
-                    restartGame();
+                    spaceIsPressed();
                     break;
             }
         }

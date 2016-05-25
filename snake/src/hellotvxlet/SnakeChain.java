@@ -42,7 +42,8 @@ public class SnakeChain implements ObserverInterface{
     {
         scene = initScene;
         pub = initPub;
-        firstComp = new SnakeComponent(60,60, componentImage);            
+        firstComp = new SnakeComponent(72,72, componentImage);
+        firstComp.setSize(24,24);
         chain.add(firstComp);
         
         scoreLabel = new HStaticText("Score = " + score);
@@ -64,6 +65,11 @@ public class SnakeChain implements ObserverInterface{
     public boolean isGameOver()
     {
         return gameOver;
+    }
+    
+    public void setGameOver(boolean value)
+    {
+        this.gameOver = value;
     }
     public void updateScoreLabel(){
          
@@ -113,6 +119,7 @@ public class SnakeChain implements ObserverInterface{
         int sceneWidth = scene.getWidth();
         int sceneHeight = scene.getHeight();    
         SnakeComponent comp;
+    
         if(moveDown)
         {
             if(y>=(sceneHeight-height))
@@ -140,7 +147,7 @@ public class SnakeChain implements ObserverInterface{
             if(x<=0)
             {
                 comp = new SnakeComponent((sceneWidth-width), y, componentImage);
-                System.out.println(sceneWidth);
+            
             }                
             else
             {
@@ -153,7 +160,7 @@ public class SnakeChain implements ObserverInterface{
             if(x>=(sceneWidth-width))
             {                    
                 comp = new SnakeComponent((0), y, componentImage);
-                System.out.println(sceneWidth);
+           
             }
             else
             {  
@@ -164,6 +171,7 @@ public class SnakeChain implements ObserverInterface{
         {
             comp = new SnakeComponent(x, (y+height), componentImage);
         }            
+        comp.setSize(24,24);
         chain.add(comp);
         updateChain();           
     }    
@@ -175,7 +183,7 @@ public class SnakeChain implements ObserverInterface{
             SnakeComponent tailComp = (SnakeComponent)chain.get(i);
             if(head.getBounds().intersects(tailComp.getBounds()))
             {
-                System.out.println("Hit");
+               
                 gameOver = true;
                 gameOverInfo();
             }
